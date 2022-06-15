@@ -8,7 +8,12 @@ namespace AlgoExpertv1
         {
             int[] array = new int[] { 1,2,3,5,6,8,9 };
 
-            Console.WriteLine(SortedSquaredArray(array));
+            Console.WriteLine();
+
+            foreach (int val in SortedSquaredArray(array))
+            {
+                Console.Write(val + " ");
+            }
         }
 
         /// <summary>
@@ -20,9 +25,14 @@ namespace AlgoExpertv1
         /// <returns></returns>
         public static int[] SortedSquaredArray(int[] array)
         {
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] *= array[i];
+            }
 
+            Array.Sort(array);
 
-            return new int[] { };
+            return array;
         }
 
         public static bool ValidateSubsequence(List<int> array,

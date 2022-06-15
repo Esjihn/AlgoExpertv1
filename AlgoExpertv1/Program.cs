@@ -6,10 +6,23 @@ namespace AlgoExpertv1
     {
         public static void Main(string[] args)
         {
-            List<int> array = new List<int> { 5, 1, 22, 25, 6, -1, 8, 10 };
-            List<int> sequence = new List<int> { 1, 6, -1, 10 };
+            int[] array = new int[] { 1,2,3,5,6,8,9 };
 
-            Console.WriteLine(ValidateSubsequence(array, sequence));
+            Console.WriteLine(SortedSquaredArray(array));
+        }
+
+        /// <summary>
+        /// Write a function that takes in a non-empty array of integers that are sorted in ascending order
+        /// and returns a new array of the same length with the squares of the original integers also sorted
+        /// in ascending order.
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        public static int[] SortedSquaredArray(int[] array)
+        {
+
+
+            return new int[] { };
         }
 
         public static bool ValidateSubsequence(List<int> array,

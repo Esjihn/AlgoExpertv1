@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AlgoExpertv1
 {
@@ -17,7 +18,10 @@ namespace AlgoExpertv1
 
             List<int> results = new List<int> { 0, 0, 1 };
 
-            Console.WriteLine(TournamentWinner(competitions, results));
+            foreach (KeyValuePair<string, int> item in TournamentWinner(competitions, results))
+            {
+                Console.WriteLine(item.Key + " " + item.Value + " ");
+            }
         }
 
         /// <summary>
@@ -42,11 +46,52 @@ namespace AlgoExpertv1
         /// <param name="competitions"></param>
         /// <param name="results"></param>
         /// <returns></returns>
-        public static string TournamentWinner(List<List<string>> competitions,
+        public static Dictionary<string, int> TournamentWinner(List<List<string>> competitions,
             List<int> results)
         {
+            Dictionary<string, int> pointTracking = new Dictionary<string, int>();
+
+            //for (int i = 0; i < competitions.Count; i++) // Results will match this level
+            //{
+            //    List<string> rounds = competitions[i];
+
+            //    if (pointTracking.ContainsKey(rounds[results[i]]))
+            //    {
+            //        pointTracking[rounds[results[i]]] += 3;
+            //    }
+            //    else
+            //    {
+            //        pointTracking.Add(rounds[results[i]], 0);
+            //    }
+            //}
+
+            for (int i = 0; i < competitions.Count; i++) // Results will match this level
+            {
+                List<string> rounds = competitions[i];
+
+                if (pointTracking.ContainsKey(rounds[0]))
+                {
+                    pointTracking[rounds[0]] += 3;
+                }
+                else if (pointTracking.ContainsKey(rounds[1]))
+                {
+                    pointTracking[rounds[1]] += 3;
+                }
+                else
+                {
+                    if (results[i] == 0)
+                    {
+                        pointTracking.Add(rounds[1], 3);
+                    }
+                    else
+                    {
+                        pointTracking.Add(rounds[0], 3);
+                    }
+                }
+            }
+
             // Write your code here.
-            return "";
+            return pointTracking;
         }
 
         /// <summary>
